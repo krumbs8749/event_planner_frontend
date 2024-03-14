@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/client';
-import { checkUserRole } from '../services/authService';
+import { checkUserRole } from '../../src/services/authService';
 
 const PrivateRoute = ({ children, role }) => {
   const [session, loading] = useSession();

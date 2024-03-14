@@ -1,0 +1,30 @@
+.circle_diagram_container {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.circle_back {
+    transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease;
+}
+
+.circle_progress {
+    transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.percentage_text {
+    fill: #333;
+    font-size: 22px;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.progress_ratio {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #666;
+}
+
+

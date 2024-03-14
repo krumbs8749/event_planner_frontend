@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080'; // Your Spring backend URL
+const BASE_URL = 'http://localhost:8080/api/events'; // Your Spring backend URL
 
 export const createEvent = async (eventData) => {
     try {
-        const response = await axios.post(`${BASE_URL}/events`, eventData);
+        const response = await axios.post(`${BASE_URL}/create`, eventData);
         return response.data;
     } catch (error) {
         console.error("Error creating event", error);
@@ -14,7 +14,7 @@ export const createEvent = async (eventData) => {
 
 export const getEvents = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/events`);
+      const response = await axios.get(`${BASE_URL}/events/getAll`);
       return response.data;
     } catch (error) {
       console.error("Error fetching events", error);

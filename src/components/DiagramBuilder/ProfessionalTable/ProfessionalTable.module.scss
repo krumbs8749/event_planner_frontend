@@ -1,0 +1,62 @@
+.tableContainer {
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+    max-width: 90%;
+    overflow-x: auto; /* Ensure table is responsive */
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* Allows table to be more responsive */
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 2px solid #f0f0f0; /* Lighter border for a softer look */
+    font-size: 16px; /* Slightly larger font size for better readability */
+}
+
+.table th {
+    background-color: #007bff; /* Add a pop of color to headers */
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5; /* Subtle hover effect */
+    cursor: pointer;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for rows */
+}
+
+/* Responsive design adjustments */
+@media screen and (max-width: 768px) {
+    .tableContainer {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .title {
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .table th, .table td {
+        padding: 10px;
+    }
+}

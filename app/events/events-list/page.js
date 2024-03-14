@@ -1,5 +1,6 @@
+'use client'
 import { useEffect, useState } from 'react';
-import { getEvents } from '../services/eventService';
+import { getEvents } from '../../../src/services/eventService';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
