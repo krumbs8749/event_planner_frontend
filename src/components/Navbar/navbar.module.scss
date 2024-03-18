@@ -1,5 +1,6 @@
 .menu {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -10,7 +11,7 @@
   left: 0; /* Align to the left of the viewport */
   background-color: #ffffff; /* Use a solid white for a clean, modern look */
   padding: 2rem 1rem; /* Provide more padding for a spacious layout */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Soft shadow on the right for depth */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow on the right for depth */
   z-index: 1000; /* Ensure the menu is above other content */
   transition: transform 0.3s ease; /* Smooth transition for any transform changes (like hide/show) */
 
@@ -32,9 +33,17 @@
     }
     
   }
-  
+  .closeButton {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
 }
 .active {
   color: #007bff !important; /* Highlight color for the active link */
   font-weight: bold; /* Optional: makes the active link bolder */
 }
+

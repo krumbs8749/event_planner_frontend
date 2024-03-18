@@ -1,18 +1,4 @@
 
-.wrapper {
-  display: grid;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  min-height: 100vh;
-  grid-template-columns: 15% 1fr;
-  grid-template-areas: "navbar main";
-
-}
-.navbar {
-  grid-area: navbar;
-}
 
 .main{
   grid-area: main;
