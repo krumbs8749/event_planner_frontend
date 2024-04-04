@@ -1,4 +1,7 @@
-export const mockEvents = [
+
+
+import { v4 as uuidv4 } from 'uuid';
+const initialEvents = [
   {
     id: "0",
     name: "Tech Conference 2024",
@@ -225,3 +228,45 @@ export const mockEvents = [
     totalRegistration: 120,
   }
 ];
+// Function to generate a random email
+function generateEmail(name) {
+    const domain = 'test.com';
+    const randomNumber = Math.floor(Math.random() * 10000);
+    return `${name.replace(/\s/g, '').toLowerCase()}${randomNumber}@${domain}`;
+}
+
+// Function to generate a random phone number
+function generatePhoneNumber() {
+    const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
+    return `+1${randomNumber}`; // Assuming US phone number format
+}
+// Function to generate mock event data
+function generateMockEvents(mockEvents) {
+  const events = mockEvents.map((event) => {
+    const attendees = generateMockAttendees(event.totalRegistration); // Generate attendees for the event
+    return ({...event, attendees});
+  })
+  
+  return events;
+}
+
+
+// Function to generate mock attendees
+function generateMockAttendees(numAttendees) {
+  const attendees = [];
+  for (let i = 0; i < numAttendees; i++) {
+      const id = uuidv4();
+      const name = `Attendee ${i + 1}`;
+      const email = generateEmail(name);
+      const phoneNumber = generatePhoneNumber();
+
+      attendees.push({ id, name, email, phoneNumber });
+  }
+  return attendees;
+}
+
+const mockEvents = generateMockEvents(initialEvents);
+
+
+export { mockEvents}
+

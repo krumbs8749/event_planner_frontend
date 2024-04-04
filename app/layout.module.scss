@@ -24,6 +24,7 @@
     padding: 1rem;
     background-color: #007bff;
     color: white !important;
+    
 }
 
 .burgerMenu {
@@ -31,4 +32,8 @@
 }
 .navbar {
     grid-area: navbar;
+    width: 0;
+    &.active{
+        width: 100%;
+    }
 }

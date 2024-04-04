@@ -40,7 +40,7 @@ const CreateEvent = () => {
         <form onSubmit={handleSubmit} className={styles.createEventForm}>
 
           {/* Event Information Section */}
-          <section className={`${styles.formSection} ${styles.eventInfo}`}>
+          <section className={styles.formSection}>
             <h2 className={styles.sectionTitle}>Event Information</h2>
             <input
               className={styles.formInput}

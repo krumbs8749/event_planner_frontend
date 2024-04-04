@@ -1,51 +1,117 @@
-// EventBoard.module.scss
+.eventBoardContainer {
+  grid-area: main;
+  padding: 2rem;
+}
 .eventBoard {
-    grid-area: main;
-    max-width: 600px;
-    margin: 2rem auto;
-    border: 1px solid #e1e4e8;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  // Your existing styles for event board container
+
+  max-width: 600px;
+  margin: 2rem auto;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  .header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 1rem;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+
+  .dateTime {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  .body {
+    padding: 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .info {
+    font-size: 0.9rem;
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .error {
+    padding: 1rem;
+    text-align: center;
+    color: #d32f2f;
+    font-size: 1rem;
+  }
 }
 
-.header {
-background-color: #007bff;
-color: #ffffff;
-padding: 1rem;
-}
+.attendeesSection {
+  margin-top: 20px;
 
-.title {
-margin: 0;
-font-size: 1.75rem;
-}
+  .attendeesTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    // Add any additional styles for the attendees title
+  }
+  .searchContainer {
+    margin-bottom: 20px; // Add some margin to separate the input and button
 
-.dateTime {
-margin-top: 0.5rem;
-font-size: 1rem;
-opacity: 0.9;
-}
+    .searchInput {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 30%; // Expand input to fill the container
+      margin-right: 10px; // Add some space between input and button
+    }
+  }
 
-.body {
-padding: 1rem;
-}
+  .attendeesList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Display attendees in two columns
+    gap: 20px; // Add some gap between the columns
 
-.description {
-font-size: 1rem;
-margin-bottom: 1rem;
-}
+    .attendee {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
 
-.info {
-font-size: 0.9rem;
-p {
-    margin: 0.5rem 0;
-}
-}
+      p {
+        margin: 5px 0;
+        // Add any additional styles for the attendee paragraphs
+      }
+    }
+  }
 
-.error {
-padding: 1rem;
-text-align: center;
-color: #d32f2f;
-font-size: 1rem;
+  .pagination {
+    margin-top: 20px;
+
+    .pageNumber {
+      background-color: #e1e4e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      margin-right: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.active{
+        background-color: #007bff;
+      }
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
 }

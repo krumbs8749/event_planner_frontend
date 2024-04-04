@@ -6,7 +6,6 @@ import './globals.css'
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import Navbar from '../src/components/Navbar/Navbar';
-
 import styles from './layout.module.scss'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -28,7 +27,7 @@ export default function RootLayout({ children }) {
           <h3>Event Planner</h3>
         </div>
       
-        {isOpen && <Navbar className={styles.navbar} closeButton={toggleNavbar}></Navbar>}
+         <Navbar isOpen={isOpen} closeButton={toggleNavbar}></Navbar>
           {children}
           
         </main>

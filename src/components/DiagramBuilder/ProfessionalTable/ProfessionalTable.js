@@ -25,7 +25,7 @@ const ProfessionalTable = ({ title, data, rateName, rateCalc }) => {
                         <td>{item.totalCost}</td>
                         <td>{rateCalc(item)}</td>
                         <td>
-                        <Link href={`/events/event-board?eventID=${item.id}`}>
+                        <Link href={`/events/event-board?eventId=${item.id}`}>
                             <button className={styles.actionButton}>→</button>
                         </Link>
                         </td>
