@@ -1,10 +1,13 @@
 .tableContainer {
-    margin: auto;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color: #ffffff;
-    max-width: 90%;
+    margin: 0;
+    padding: 2rem; /* Add some padding inside the container for space */
+    max-width: 80%; /* Set a max-width for better readability */
+    border: 1px solid #e0e0e0; /* Subtle border color */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #ffffff; /* Light background */
+    color: #333; /* Dark gray for text for better readability */
+    text-align: center; /* Align text to the left */
     overflow-x: auto; /* Ensure table is responsive */
 }
 

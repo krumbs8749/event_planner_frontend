@@ -1,57 +1,105 @@
-// CreateEvent.module.scss
-
 .createEventContainer {
-  
+  grid-area: main;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
+  justify-content: space-around;
+  margin-top: 2rem;
+  width: 100%;
   height: 100%;
-  margin: auto;
-  
-
-}
-  
-.createEventFormContainer{
-  
-  background: #f7f7f7;
-  width: 80%;
-  height: 80%;
+  flex-direction: column;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  box-sizing: border-box;
+
+  
 }
-.createEventForm {
+
+.createEventFormContainer {
+  background: #ffff;;
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  
+  h1 {
+    text-align: center;
+  }
+}
+
+.createEventForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 10%;
+  grid-template-areas: 
+    "eventInfo owner"
+    "eventInfo eventDetails"
+    "button button";
+  gap: 15px;
+}
+
+.formSection {
+  background: #ffffff; // Optional: Different background for section distinction
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); // Soft shadow for depth
+  display: flex;
+  flex-direction: column;
+  &.eventInfo{
+    grid-area: eventInfo;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: 15px; // Space between title and inputs
+  color: #007bff; // Theme color for titles
+  font-size: 20px; // Larger font size for section titles
 }
 
 .formInput,
-.formTextarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.formInputDateTime,
+.formInputEmail,
+.formInputNumber,
+.formTextArea {
+  padding: 12px 15px;
+  border: 2px solid #e1e4e8;
+  border-radius: 6px;
   font-size: 16px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  transition: border-color 0.2s;
+  
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 2px rgba(0,86,179,0.2);
+  }
 }
 
-.formTextarea {
+.formTextArea {
   resize: vertical;
-  min-height: 150px;
+  min-height: 120px;
 }
 
 .submitButton {
-  padding: 10px 20px;
-  background-color: #0056b3;
+  grid-area: button;
+  padding: 12px 20px;
+  width: 100%;
+  background-color: #007bff;
   color: white;
+  font-size: 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
-    background-color: #004494;
+    background-color: darken(#007bff, 10%);;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }

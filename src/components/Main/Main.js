@@ -9,26 +9,29 @@ import RegistrationRateChart from '../DiagramBuilder/RegistrationOverTime/Regist
 const Main = ({className, events}) => {
   return (
     <main className={className}>
-        <div className={styles.row}>
+        <div className={styles.col}>  
+          <div className={styles.row}>
             <div className={styles.rect_container}>
-              <h3>Total ticket sold</h3>
-               <p>200</p>
-            </div>
+                  <h3>Total ticket sold</h3>
+                  <p>200</p>
+                </div>
+              <div className={styles.rect_container}>
+                  <h3>New Events</h3>
+                  <p>17</p>
+              </div>
+          </div>
+          <div className={styles.row}>
             <div className={styles.rect_container}>
-                <h3>New Events</h3>
-                <p>17</p>
+              <RegistrationRateChart />
             </div>
-            
-            <div className={styles.rect_container}>
-             <RegistrationRateChart />
-            </div>
+          </div>
         </div>
-        <div className={styles.row}>
-          <ProfessionalTable 
-            title="List of events" 
-            rateName="Attendance Rate" 
-            rateCalc={(d) => (d.totalRegistration / d.totalSeats).toFixed(2) } 
-            data={events}/>
+        <div className={styles.col}>
+            <ProfessionalTable 
+              title="List of events" 
+              rateName="Attendance Rate" 
+              rateCalc={(d) => (d.totalRegistration / d.totalSeats).toFixed(2) } 
+              data={events}/>
         </div>
     </main>
   )
