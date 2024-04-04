@@ -63,3 +63,23 @@
         padding: 10px;
     }
 }
+
+.actionButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+  
+    &:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+  }

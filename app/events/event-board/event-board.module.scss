@@ -1,0 +1,51 @@
+// EventBoard.module.scss
+.eventBoard {
+    grid-area: main;
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.header {
+background-color: #007bff;
+color: #ffffff;
+padding: 1rem;
+}
+
+.title {
+margin: 0;
+font-size: 1.75rem;
+}
+
+.dateTime {
+margin-top: 0.5rem;
+font-size: 1rem;
+opacity: 0.9;
+}
+
+.body {
+padding: 1rem;
+}
+
+.description {
+font-size: 1rem;
+margin-bottom: 1rem;
+}
+
+.info {
+font-size: 0.9rem;
+p {
+    margin: 0.5rem 0;
+}
+}
+
+.error {
+padding: 1rem;
+text-align: center;
+color: #d32f2f;
+font-size: 1rem;
+}
