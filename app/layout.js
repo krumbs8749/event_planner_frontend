@@ -5,12 +5,13 @@ import './globals.css'
 
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
-import Navbar from '../src/components/Navbar/Navbar';
+import { FaHome, FaPlus } from 'react-icons/fa';
 import styles from './layout.module.scss'
 
+import Link from 'next/link';
+import Tooltip from '../src/components/Toolitp/Tooltip';
+
 const inter = Inter({ subsets: ['latin'] })
-
-
 
 export default function RootLayout({ children }) {
   
@@ -23,11 +24,18 @@ export default function RootLayout({ children }) {
         <main className={styles.wrapper}>
         
         <div className={styles.topbar} onClick={toggleNavbar}>
-          <FiMenu className={styles.burgerMenu} size={24} color="white" />
+          <div className={styles.menu}>
+            <Link href="/">
+              <Tooltip text="Home"><FaHome/></Tooltip>
+            </Link>
+            <Link href="/events/create-event">
+              <Tooltip text="Create Event"><FaPlus /></Tooltip>
+            </Link>
+          </div>
+        
           <h3>Event Planner</h3>
         </div>
       
-         <Navbar isOpen={isOpen} closeButton={toggleNavbar}></Navbar>
           {children}
           
         </main>
