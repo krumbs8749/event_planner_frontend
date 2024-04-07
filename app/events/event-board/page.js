@@ -80,9 +80,7 @@ const EventBoard = () => {
           )}
 
           {activeTab === 'Costs' && (
-            <div>
               <CostSource costs={event?.costs} />
-            </div>
           )}
 
           {activeTab === 'Tasks' && (

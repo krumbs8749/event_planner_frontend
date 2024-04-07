@@ -1,10 +1,17 @@
 .eventBoardContainer {
+  height: 80rem;
   grid-area: main;
-  padding: 2rem;
+  display: grid;
+  grid-template-rows: 30rem 2rem 50rem;
+  grid-template-areas: 
+   "info"
+   "tabs"
+   "content";
+  padding: 0.5rem 2rem;
 }
 .eventBoard {
   // Your existing styles for event board container
-
+  grid-area: info;
   max-width: 600px;
   margin: 2rem auto;
   border: 1px solid #e1e4e8;
@@ -54,6 +61,7 @@
 }
 
 .tabs {
+    grid-area: tabs;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -86,6 +94,7 @@
   
   /* Add transitions for the tab content for a smooth change */
 .tabContent {
+    grid-area: content;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
