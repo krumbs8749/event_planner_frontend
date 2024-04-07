@@ -31,6 +31,23 @@
     justify-content: space-between;
     a {
         margin-right: 1rem;
+        display: flex;
+        align-items: center;
     }
+    .eventIndicator {
+        margin-left: 20px;
+        padding: 0.1rem 0.3rem;
+        background-color: white; 
+        color: #007bff;
+        border-radius: 1rem; // Creates a circle
+        font-weight: bold;
+        display: inline-flex; // Use flex to center content
+        align-items: center; 
+        justify-content: center; 
+        margin-left: 20px; 
+        border: 0.15rem solid white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
+      }
+      
 }
 

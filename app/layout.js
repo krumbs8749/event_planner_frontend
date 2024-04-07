@@ -1,29 +1,27 @@
 'use client';
 import { Inter } from 'next/font/google'
 import './globals.css'
-
-
-import { useState } from 'react';
-import { FiMenu } from 'react-icons/fi';
-import { FaHome, FaPlus } from 'react-icons/fa';
 import styles from './layout.module.scss'
 
+import { FaHome, FaPlus } from 'react-icons/fa';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Tooltip from '../src/components/Toolitp/Tooltip';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  // Check if the path includes "event-board"
+  const isEventBoard = pathname.includes("event-board");
   
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleNavbar = () => setIsOpen(!isOpen);
   return (
     <html lang="en">
       <body className={inter.className}>
         <main className={styles.wrapper}>
         
-        <div className={styles.topbar} onClick={toggleNavbar}>
+        <div className={styles.topbar}>
           <div className={styles.menu}>
             <Link href="/">
               <Tooltip text="Home"><FaHome/></Tooltip>
@@ -31,6 +29,12 @@ export default function RootLayout({ children }) {
             <Link href="/events/create-event">
               <Tooltip text="Create Event"><FaPlus /></Tooltip>
             </Link>
+            {/* Conditional rendering of the indicator */}
+            {isEventBoard && (
+              <div className={styles.eventIndicator}>
+                Event Dashboard
+              </div>
+            )}
           </div>
         
           <h3>Event Planner</h3>
