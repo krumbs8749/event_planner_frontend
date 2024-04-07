@@ -7,6 +7,7 @@ import Attendees from '../../../src/components/Attendees/Attendees';
 
 
 import { FaUsers, FaMoneyBillWave, FaTasks } from 'react-icons/fa';
+import { CostSource } from '../../../src/components/CostSources/CostSource';
 
 const tabIcons = {
   Attendees: <FaUsers />,
@@ -80,8 +81,7 @@ const EventBoard = () => {
 
           {activeTab === 'Costs' && (
             <div>
-              {/* Implement or integrate the cost list view */}
-              <p>Costs List View</p>
+              <CostSource costs={event?.costs} />
             </div>
           )}
 
