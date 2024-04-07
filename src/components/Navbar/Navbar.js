@@ -2,11 +2,14 @@
 import Link from 'next/link';
 import styles from './navbar.module.scss';
 
+import { useRouter } from 'next/navigation';
+
 const Navbar = ({ isOpen, closeButton }) => {
   // Function to check if the link is active
-  const isActive = (href) => window.location.pathname === href;
+  const router = useRouter();
 
-  console.log(isActive('/'))
+  // Function to check if the link is active
+  const isActive = (href) => router.pathname === href;
 
   return (
       <div className={`${styles.menu} ${isOpen && styles.active}`}>
