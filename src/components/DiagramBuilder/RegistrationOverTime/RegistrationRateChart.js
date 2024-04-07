@@ -57,11 +57,11 @@ const RegistrationRateChart = () => {
 
   useEffect(() => {
     const { labels, data } = generateMockData(timeframe.period, timeframe.unit);
-    setChartData({
-      ...chartData,
+    setChartData(c => ({
+      ...c,
       labels: labels,
-      datasets: [{ ...chartData.datasets[0], data: data }],
-    });
+      datasets: [{ ...c.datasets[0], data: data }],
+    }));
   }, [timeframe]);
 
   const handlePeriodChange = (e) => {
