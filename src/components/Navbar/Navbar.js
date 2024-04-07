@@ -10,10 +10,8 @@ const Navbar = ({ isOpen, closeButton }) => {
 
   return (
       <div className={`${styles.menu} ${isOpen && styles.active}`}>
-        <Link href="/" className={isActive('/') ? styles.active : ''}>Home</Link>
-        <Link href="/events/create-event" className={isActive('/events/create-event') ? styles.active : ''}>Create Event</Link>
-        <Link href="/events/event-list" className={isActive('/events/event-list') ? styles.active : ''}>Attendance List</Link>
-        
+        <Link href="/" className={isActive('/') ? styles.active : ''} onClick={closeButton}>Home</Link>
+        <Link href="/events/create-event" className={isActive('/events/create-event') ? styles.active : ''} onClick={closeButton}>Create Event</Link>
         <span className={styles.closeButton} onClick={closeButton}>X</span>
       </div>
   );

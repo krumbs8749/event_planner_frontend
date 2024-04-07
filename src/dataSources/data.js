@@ -240,16 +240,30 @@ function generatePhoneNumber() {
     const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
     return `+1${randomNumber}`; // Assuming US phone number format
 }
-// Function to generate mock event data
-function generateMockEvents(mockEvents) {
-  const events = mockEvents.map((event) => {
-    const attendees = generateMockAttendees(event.totalRegistration); // Generate attendees for the event
-    return ({...event, attendees});
-  })
-  
-  return events;
+
+// Function to generate mock data for CostSource
+function generateMockCostSources() {
+  return [
+    { id: uuidv4(), name: 'Venue Rental', description: 'Rental of convention center', category: 'Venue', cost: 5000.0 },
+    { id: uuidv4(), name: 'Catering', description: 'Food and beverages for attendees', category: 'Food', cost: 3000.0 },
+    { id: uuidv4(), name: 'Speaker Fees', description: 'Honorarium for keynote speakers', category: 'Speakers', cost: 2000.0 },
+    // Add more mock cost sources as needed
+    { id: uuidv4(), name: 'Marketing', description: 'Advertising and promotional materials', category: 'Marketing', cost: 1500.0 },
+    { id: uuidv4(), name: 'Equipment Rental', description: 'Rental of audiovisual equipment', category: 'Equipment', cost: 1000.0 }
+  ];
 }
 
+// Function to generate mock data for Task
+function generateMockTasks() {
+  return [
+    { id: uuidv4(), name: 'Prepare Presentation', description: 'Create slides for presentation', cost: 0.0 },
+    { id: uuidv4(), name: 'Coordinate Logistics', description: 'Arrange transportation and accommodation', cost: 0.0 },
+    { id: uuidv4(), name: 'Promote Event', description: 'Market the event on social media and other channels', cost: 0.0 },
+    // Add more mock tasks as needed
+    { id: uuidv4(), name: 'Set Up Venue', description: 'Arrange seating and decorations', cost: 0.0 },
+    { id: uuidv4(), name: 'Register Attendees', description: 'Check-in attendees at the registration desk', cost: 0.0 }
+  ];
+}
 
 // Function to generate mock attendees
 function generateMockAttendees(numAttendees) {
@@ -265,8 +279,29 @@ function generateMockAttendees(numAttendees) {
   return attendees;
 }
 
+// Function to generate mock event data
+function generateMockEvents(mockEvents) {
+  const events = mockEvents.map((event) => {
+    // Generate at least ten attendees for each event
+    let attendees = generateMockAttendees(Math.max(10, event.totalRegistration));
+
+    // Generate mock cost sources
+    const costs = generateMockCostSources();
+    // Calculate the total cost based on the provided costs
+    const totalCost = costs.reduce((acc, curr) => acc + curr.cost, 0);
+
+    // Generate mock tasks
+    const tasks = generateMockTasks();
+
+    return ({...event, attendees, costs, tasks, totalCost});
+  });
+  
+  return events;
+}
+
+
+
+// Generate mock event data with attendees, costs, and tasks
 const mockEvents = generateMockEvents(initialEvents);
 
-
-export { mockEvents}
-
+export { mockEvents };
