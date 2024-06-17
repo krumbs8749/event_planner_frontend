@@ -1,40 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Table, Button, Tabs, Tab } from 'react-bootstrap';
 import Link from 'next/link';
-import styles from './ProfessionalTable.module.scss'; // Make sure to create this CSS module
+import styles from './ProfessionalTable.module.scss';
 
-const ProfessionalTable = ({ title, data, rateName, rateCalc }) => {
+const ProfessionalTable = ({ data, rateName, rateCalc }) => {
+  const [key, setKey] = useState('live');
 
-    return (
-        <div className={styles.tableContainer}>
-            <h2 className={styles.title}>{title}</h2>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Budget</th>
-                        <th>{rateName}</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {data.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.name}</td>
-                        <td>{item.description.length > 50 ? `${item.description.substring(0, 50)}...` : item.description}</td>
-                        <td>{item.totalCost}</td>
-                        <td>{rateCalc(item)}</td>
-                        <td>
-                        <Link href={`/events/event-board?eventId=${item.id}`}>
-                            <button className={styles.actionButton}>→</button>
-                        </Link>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+  const liveEvents = data.filter(item => item.status === 'Live');
+  const completedEvents = data.filter(item => item.status === 'Completed');
+
+  const renderTable = (events) => (
+    <Table className={styles.table} striped bordered hover responsive>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Budget</th>
+          <th>{rateName}</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {events.map((item, index) => (
+          <tr key={index}>
+            <td>{item.name}</td>
+            <td>{item.description.length > 50 ? `${item.description.substring(0, 50)}...` : item.description}</td>
+            <td>{item.totalCost}</td>
+            <td>{rateCalc(item)}</td>
+            <td>
+              <Link href={`/events/event-board?eventId=${item.id}`} passHref>
+                <Button variant="primary" size="sm">→</Button>
+              </Link>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+
+  return (
+    <div className={styles.tableContainer}>
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3"
+      >
+        <Tab eventKey="live" title="Live Events">
+          {renderTable(liveEvents)}
+        </Tab>
+        <Tab eventKey="completed" title="Completed Events">
+          {renderTable(completedEvents)}
+        </Tab>
+      </Tabs>
+    </div>
+  );
 };
 
 export default ProfessionalTable;

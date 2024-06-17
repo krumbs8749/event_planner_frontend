@@ -16,6 +16,7 @@ const initialEvents = [
     totalCost: 15000.00,
     totalSeats: 500,
     totalRegistration: 350,
+    status: 'Live'
   },
   {
     id: "1",
@@ -31,6 +32,7 @@ const initialEvents = [
     totalCost: 8000.00,
     totalSeats: 200,
     totalRegistration: 150,
+    status: 'Completed'
   },
   {
     id: "2",
@@ -46,6 +48,7 @@ const initialEvents = [
     totalCost: 10000.00,
     totalSeats: 300,
     totalRegistration: 250,
+    status: 'Live'
   },
   {
     id: "3",
@@ -61,6 +64,7 @@ const initialEvents = [
     totalCost: 12000.00,
     totalSeats: 400,
     totalRegistration: 300,
+    status: 'Completed'
   },
   {
     id: "4",
@@ -76,6 +80,7 @@ const initialEvents = [
     totalCost: 9000.00,
     totalSeats: 250,
     totalRegistration: 200,
+    status: 'Live'
   },
   {
     id: "5",
@@ -91,6 +96,7 @@ const initialEvents = [
     totalCost: 20000.00,
     totalSeats: 600,
     totalRegistration: 500,
+    status: 'Completed'
   },
   {
     id: "6",
@@ -106,6 +112,7 @@ const initialEvents = [
     totalCost: 15000.00,
     totalSeats: 350,
     totalRegistration: 300,
+    status: 'Live'
   },
   {
     id: "7",
@@ -121,6 +128,7 @@ const initialEvents = [
     totalCost: 12000.00,
     totalSeats: 400,
     totalRegistration: 350,
+    status: 'Completed'
   },
   {
     id: "8",
@@ -136,6 +144,7 @@ const initialEvents = [
     totalCost: 7000.00,
     totalSeats: 150,
     totalRegistration: 100,
+    status: 'Live'
   },
   {
     id: "9",
@@ -151,6 +160,7 @@ const initialEvents = [
     totalCost: 18000.00,
     totalSeats: 450,
     totalRegistration: 400,
+    status: 'Completed'
   },
   {
     id: "10",
@@ -166,6 +176,7 @@ const initialEvents = [
     totalCost: 6000.00,
     totalSeats: 100,
     totalRegistration: 80,
+    status: 'Live'
   },
   {
     id: "11",
@@ -181,6 +192,7 @@ const initialEvents = [
     totalCost: 8500.00,
     totalSeats: 200,
     totalRegistration: 150,
+    status: 'Completed'
   },
   {
     id: "12",
@@ -196,6 +208,7 @@ const initialEvents = [
     totalCost: 10000.00,
     totalSeats: 300,
     totalRegistration: 250,
+    status: 'Live'
   },
   {
     id: "13",
@@ -211,6 +224,7 @@ const initialEvents = [
     totalCost: 13000.00,
     totalSeats: 350,
     totalRegistration: 300,
+    status: 'Completed'
   },
   {
     id: "14",
@@ -226,8 +240,12 @@ const initialEvents = [
     totalCost: 7000.00,
     totalSeats: 150,
     totalRegistration: 120,
+    status: 'Live'
   }
 ];
+
+export default initialEvents;
+
 // Function to generate a random email
 function generateEmail(name) {
     const domain = 'test.com';
@@ -304,4 +322,74 @@ function generateMockEvents(mockEvents) {
 // Generate mock event data with attendees, costs, and tasks
 const mockEvents = generateMockEvents(initialEvents);
 
-export { mockEvents };
+// mock scheduled events
+const upcomingSchedules = [
+  {
+    time: new Date('2024-05-20T10:00:00Z'),
+    name: 'Tech Conference 2024',
+    status: 'Registration Open',
+    statusClass: 'registrationOpen',
+    venue: 'Convention Center, Techville',
+    participants: [
+      { avatar: 'path/to/avatar1.jpg', name: 'John Doe' },
+      { avatar: 'path/to/avatar2.jpg', name: 'Jane Smith' },
+    ],
+  },
+  {
+    time: new Date('2024-09-22T10:00:00Z'),
+    name: 'Health & Wellness Expo',
+    status: 'Event Occurring',
+    statusClass: 'eventOccurring',
+    venue: 'Community Center, Wellness District',
+    participants: [
+      { avatar: 'path/to/avatar3.jpg', name: 'Alice Johnson' },
+      { avatar: 'path/to/avatar4.jpg', name: 'Robert Brown' },
+    ],
+  },
+  {
+    time: new Date('2024-07-10T12:00:00Z'),
+    name: 'Food Festival',
+    status: 'Registration Closed',
+    statusClass: 'registrationClosed',
+    venue: 'City Park',
+    participants: [
+      { avatar: 'path/to/avatar5.jpg', name: 'Chris Davis' },
+      { avatar: 'path/to/avatar6.jpg', name: 'Patricia Garcia' },
+    ],
+  },
+  {
+    time: new Date('2024-06-15T09:00:00Z'),
+    name: 'Art & Design Expo',
+    status: 'Registration Open',
+    statusClass: 'registrationOpen',
+    venue: 'Art Gallery, Downtown',
+    participants: [
+      { avatar: 'path/to/avatar7.jpg', name: 'Michael Scott' },
+      { avatar: 'path/to/avatar8.jpg', name: 'Dwight Schrute' },
+    ],
+  },
+  {
+    time: new Date('2024-10-18T15:00:00Z'),
+    name: 'Music Festival',
+    status: 'Event Occurring',
+    statusClass: 'eventOccurring',
+    venue: 'Amphitheater, Riverside',
+    participants: [
+      { avatar: 'path/to/avatar9.jpg', name: 'Jim Halpert' },
+      { avatar: 'path/to/avatar10.jpg', name: 'Pam Beesly' },
+    ],
+  },
+  {
+    time: new Date('2024-11-12T11:00:00Z'),
+    name: 'Film & TV Expo',
+    status: 'Registration Closed',
+    statusClass: 'registrationClosed',
+    venue: 'Film Studio, Hollywood',
+    participants: [
+      { avatar: 'path/to/avatar11.jpg', name: 'Andy Bernard' },
+      { avatar: 'path/to/avatar12.jpg', name: 'Stanley Hudson' },
+    ],
+  },
+];
+
+export { mockEvents, upcomingSchedules };

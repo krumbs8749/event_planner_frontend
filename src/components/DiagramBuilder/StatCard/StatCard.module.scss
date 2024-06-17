@@ -1,0 +1,33 @@
+.statCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #e0e0e0; /* Subtle border color */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #ffffff; /* Light background */
+    color: #333; /* Dark gray for text for better readability */
+    text-align: center; /* Center the text */
+  }
+  
+  .label {
+    font-size: 14px;
+    color: #888888; /* Greyed out label */
+    align-self: flex-start; /* Align to the top-left */
+    margin-bottom: 0.5rem; /* Space between label and value */
+  }
+  
+  .subtitle {
+    font-size: 12px;
+    color: #888888;
+    margin-bottom: 0.5rem;
+  }
+  
+  .value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  

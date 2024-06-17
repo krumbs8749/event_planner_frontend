@@ -1,0 +1,73 @@
+.timelineContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #e0e0e0; /* Subtle border color */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #ffffff; /* Light background */
+  
+  
+  .detailsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .event {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .time {
+    font-size: 0.7rem;
+    color: #888888; /* Light grey color */
+    margin-right: 1rem;
+    width: 60px; /* Fixed width for time */
+    text-align: right; /* Align text to the right */
+  }
+  
+  .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .eventName {
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .statusBadge {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 0.5rem;
+  }
+  
+  .registrationOpen {
+    background-color: #28a745; /* Green background */
+    color: #ffffff; /* White text */
+  }
+  
+  .eventOccurring {
+    background-color: #ffc107; /* Yellow background */
+    color: #ffffff; /* White text */
+  }
+  
+  .registrationClosed {
+    background-color: #dc3545; /* Red background */
+    color: #ffffff; /* White text */
+  }
+  
+  .venue {
+    font-size: 14px;
+    color: #888888; /* Light grey color */
+  }
+}

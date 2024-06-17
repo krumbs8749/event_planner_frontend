@@ -1,43 +1,54 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-}
-.col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.rect_container {
-    display: block;
-    margin: 0 auto; /* Center the container */
-    padding: 2rem; /* Add some padding inside the container for space */
-    max-width: 600px; /* Set a max-width for better readability */
-    border: 1px solid #e0e0e0; /* Subtle border color */
-    border-radius: 8px; /* Rounded corners for a modern look */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    background-color: #ffffff; /* Light background */
-    color: #333; /* Dark gray for text for better readability */
-    text-align: center; /* Align text to the left */
-
-    h3 {
-        margin-top: 0; /* Remove top margin from the first element */
-        color: #007bff; /* A fresh color for headings */
-        font-size: 24px; /* Slightly larger font size for headings */
+.dashboard {
+    padding: 1rem;
+  
+    .card {
+        height: 425px; 
+        overflow-y: scroll !important;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px; /* Width of the entire scrollbar */
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color of the track */
+            border-radius: 20px; /* Rounded track */
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #888; /* Gray color of the thumb */
+            border-radius: 20px; /* Roundness of the thumb */
+            border: 3px solid #f1f1f1; /* Padding around the thumb */
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker gray color of the thumb when hovered */
+        }
+        
+        ::-webkit-scrollbar-corner {
+            background: #f1f1f1; /* Color of the corner */
+        }
+        
+        /* Firefox */
+        scrollbar-width: thin; /* Width of the scrollbar */
+        scrollbar-color: #888 #f1f1f1; /* Color of the thumb and track */
+        
+  
     }
-
-    span, p {
-        display: block; /* Makes span take the whole line */
-        margin-top: 10px;
-        font-size: 20px;
-        color: #007bff;
-        font-weight: 500;
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    p{
-        font-size: 3rem !important;
+  
+    .progress-container,
+    .pie-chart-container {
+    max-height: 20vh;
+      margin-bottom: 1rem;
     }
-}
- 
+  
+    .table-container {
+      margin-bottom: 1rem;
+    }
+  }
+  

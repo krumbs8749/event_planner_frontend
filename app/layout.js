@@ -7,15 +7,14 @@ import { FaHome, FaPlus } from 'react-icons/fa';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Tooltip from '../src/components/Toolitp/Tooltip';
+import Tooltip from '../src/components/Tooltip/Tooltip';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  // Check if the path includes "event-board"
   const isEventBoard = pathname.includes("event-board");
-  
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -24,23 +23,21 @@ export default function RootLayout({ children }) {
         <div className={styles.topbar}>
           <div className={styles.menu}>
             <Link href="/">
-              <Tooltip text="Home"><FaHome/></Tooltip>
+              <Tooltip text="Home"><FaHome /></Tooltip>
             </Link>
             <Link href="/events/create-event">
               <Tooltip text="Create Event"><FaPlus /></Tooltip>
             </Link>
-            {/* Conditional rendering of the indicator */}
             {isEventBoard && (
               <div className={styles.eventIndicator}>
                 Event Dashboard
               </div>
             )}
           </div>
-        
           <h3>Event Planner</h3>
         </div>
       
-          {children}
+        {children}
           
         </main>
       </body>
