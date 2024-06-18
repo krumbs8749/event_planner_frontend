@@ -1,21 +1,11 @@
 .eventBoardContainer {
-  height: 80rem;
   grid-area: main;
-  display: grid;
-  grid-template-rows: 30rem 2rem 50rem;
-  grid-template-areas: 
-   "info"
-   "tabs"
-   "content";
   padding: 0.5rem 2rem;
 }
 .eventBoard {
-  // Your existing styles for event board container
   grid-area: info;
-  max-width: 600px;
   margin: 2rem auto;
   border: 1px solid #e1e4e8;
-  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -61,54 +51,92 @@
 }
 
 .tabs {
-    grid-area: tabs;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
+  grid-area: tabs;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-  
+
 .tab {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Space between icon and text */
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s, border-color 0.3s;
-    border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s, border-color 0.3s;
+  border-radius: 5px;
   
-    &:hover {
-      background-color: #e9e9e9;
-      border-color: #b3b3b3;
-    }
+  &:hover {
+    background-color: #e9e9e9;
+    border-color: #b3b3b3;
+  }
 }
-  
+
 .activeTab {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }
-  
-  /* Add transitions for the tab content for a smooth change */
+
+/* Add transitions for the tab content for a smooth change */
 .tabContent {
-    grid-area: content;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+  grid-area: content;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
-  
-  /* Example responsive adjustments */
+
+/* Example responsive adjustments */
 @media (max-width: 768px) {
-    .tabs {
-      justify-content: space-around;
-    }
+  .tabs {
+    justify-content: space-around;
+  }
+
+  .tab {
+    padding: 8px 16px;
+  }
+}
+.card {
+  height: 20rem; 
   
-    .tab {
-      padding: 8px 16px;
-    }
+  margin: 2rem auto;
+  overflow-y: scroll !important;
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+      width: 12px; /* Width of the entire scrollbar */
   }
   
+  ::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Color of the track */
+      border-radius: 20px; /* Rounded track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+      background-color: #888; /* Gray color of the thumb */
+      border-radius: 20px; /* Roundness of the thumb */
+      border: 3px solid #f1f1f1; /* Padding around the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555; /* Darker gray color of the thumb when hovered */
+  }
+  
+  ::-webkit-scrollbar-corner {
+      background: #f1f1f1; /* Color of the corner */
+  }
+  
+  /* Firefox */
+  scrollbar-width: thin; /* Width of the scrollbar */
+  scrollbar-color: #888 #f1f1f1; /* Color of the thumb and track */
+  
 
-
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

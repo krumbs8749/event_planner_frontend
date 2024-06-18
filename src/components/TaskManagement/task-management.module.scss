@@ -1,0 +1,37 @@
+
+  
+.taskManagementContainer {
+  overflow-x: auto; // Ensures table is scrollable on smaller screen
+  width: 100%;
+  height: 100%;
+}
+
+.tasksTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  min-width: 400px; // Ensures table does not become too squished
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd; // Light border for separation
+  }
+
+  th {
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0; // Keeps the header visible at top when scrolling
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2; // Zebra striping for rows
+  }
+
+  td {
+    // Optional: Add styling for cell content alignment, padding, etc.
+  }
+}

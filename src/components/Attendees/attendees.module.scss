@@ -1,61 +1,67 @@
 .attendeesSection {
-  
-    .attendeesTitle {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      // Add any additional styles for the attendees title
+  padding: 1rem;
+
+  .searchContainer {
+    margin-bottom: 20px; // Add some margin to separate the input and button
+
+    .searchInput {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 30%; // Expand input to fill the container
+      margin-right: 10px; // Add some space between input and button
     }
-    .searchContainer {
-      margin-bottom: 20px; // Add some margin to separate the input and button
-  
-      .searchInput {
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 16px;
-        width: 30%; // Expand input to fill the container
-        margin-right: 10px; // Add some space between input and button
+  }
+
+  .attendeesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    min-width: 400px; // Ensures table does not become too squished
+
+    th,
+    td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #ddd; // Light border for separation
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+      position: sticky;
+      top: 0; // Keeps the header visible at top when scrolling
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2; // Zebra striping for rows
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .pageNumber {
+      background-color: #e1e4e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      margin-right: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.active {
+        background-color: #007bff;
       }
-    }
-  
-    .attendeesList {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); // Display attendees in two columns
-      gap: 20px; // Add some gap between the columns
-  
-      .attendee {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 10px;
-  
-        p {
-          margin: 5px 0;
-          // Add any additional styles for the attendee paragraphs
-        }
-      }
-    }
-  
-    .pagination {
-      margin-top: 20px;
-  
-      .pageNumber {
-        background-color: #e1e4e8;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 5px 10px;
-        margin-right: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-  
-        &.active{
-          background-color: #007bff;
-        }
-        &:hover {
-          background-color: #0056b3;
-        }
+
+      &:hover {
+        background-color: #0056b3;
       }
     }
   }
+}

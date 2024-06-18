@@ -283,16 +283,38 @@ function generateMockTasks() {
   ];
 }
 
-// Function to generate mock attendees
+function getRandomItem(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+const statuses = ['Registered', 'Checked-in', 'Cancelled'];
+const ticketTypes = ['VIP', 'General Admission', 'Student'];
+const companies = ['Company A', 'Company B', 'Company C'];
+
 function generateMockAttendees(numAttendees) {
   const attendees = [];
   for (let i = 0; i < numAttendees; i++) {
-      const id = uuidv4();
-      const name = `Attendee ${i + 1}`;
-      const email = generateEmail(name);
-      const phoneNumber = generatePhoneNumber();
+    const id = uuidv4();
+    const name = `Attendee ${i + 1}`;
+    const email = generateEmail(name);
+    const phoneNumber = generatePhoneNumber();
+    const status = getRandomItem(statuses);
+    const registrationDate = new Date(Date.now() - Math.floor(Math.random() * 1e10)).toISOString();
+    const ticketType = getRandomItem(ticketTypes);
+    const company = getRandomItem(companies);
+    const notes = `Notes for ${name}`;
 
-      attendees.push({ id, name, email, phoneNumber });
+    attendees.push({
+      id,
+      name,
+      email,
+      phoneNumber,
+      status,
+      registrationDate,
+      ticketType,
+      company,
+      notes
+    });
   }
   return attendees;
 }
