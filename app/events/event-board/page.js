@@ -18,11 +18,20 @@ const tabIcons = {
   Tasks: <FaTasks />
 };
 
-const EventBoardContent = ({eventId}) => {
+const EventBoardContent = () => {
+  const searchParams = useSearchParams();
+  const [eventId, setEventId] = useState(null);
   const [event, setEvent] = useState(null);
   const [costs, setCosts] = useState([]);
   const [tasks, setTasks] = useState([]);
 
+  
+
+  useEffect(() => {
+    const eventIdFromParams = searchParams.get('eventId');
+    setEventId(eventIdFromParams);
+  }, [searchParams]);
+  
   useEffect(() => {
     const fetchEvent = async () => {
       const data = mockEvents.find(event => event.id === eventId);
@@ -55,7 +64,6 @@ const EventBoardContent = ({eventId}) => {
       return 0; // Not ready
     }
   };
-console.log(new Date(event.dateTime))
   const currentStage = getCurrentStage();
 
   return (
@@ -127,17 +135,10 @@ console.log(new Date(event.dateTime))
 };
 
 const EventBoard = () => {
-  const [eventId, setEventId] = useState(null);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const eventIdFromParams = searchParams.get('eventId');
-    setEventId(eventIdFromParams);
-  }, [searchParams]);
 
   return (
     <Suspense fallback={<p>Loading...</p>}>
-      {eventId ? <EventBoardContent eventId={eventId} /> : <p>Loading...</p>}
+      <EventBoardContent  />
     </Suspense>
   );
 };
