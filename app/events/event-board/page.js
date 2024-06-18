@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense  } from 'react';
 import { mockEvents, upcomingSchedules } from '../../../src/dataSources/data';
 import Attendees from '../../../src/components/Attendees/Attendees';
 import { CostSource } from '../../../src/components/CostSources/CostSource';
@@ -18,9 +18,7 @@ const tabIcons = {
   Tasks: <FaTasks />
 };
 
-const EventBoard = () => {
-  const searchParams = useSearchParams();
-  const eventId = searchParams.get('eventId');
+const EventBoardContent = ({eventId}) => {
   const [event, setEvent] = useState(null);
   const [costs, setCosts] = useState([]);
   const [tasks, setTasks] = useState([]);
@@ -125,6 +123,22 @@ console.log(new Date(event.dateTime))
         </Row>
       </Tab.Container>
     </Container>
+  );
+};
+
+const EventBoard = () => {
+  const [eventId, setEventId] = useState(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const eventIdFromParams = searchParams.get('eventId');
+    setEventId(eventIdFromParams);
+  }, [searchParams]);
+
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      {eventId ? <EventBoardContent eventId={eventId} /> : <p>Loading...</p>}
+    </Suspense>
   );
 };
 
