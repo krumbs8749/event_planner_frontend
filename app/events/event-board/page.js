@@ -11,6 +11,8 @@ import EventTimelineChart from '../../../src/components/DiagramBuilder/EventTime
 import StatCard from '../../../src/components/DiagramBuilder/StatCard/StatCard';
 import EventProgress from '../../../src/components/DiagramBuilder/EventProgress/EventProgress';
 import TaskManagement from '../../../src/components/TaskManagement/TaskManagement';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchEventById, updateEvent } from '../../api/eventAPI';
 
 const tabIcons = {
   Attendees: <FaUsers />,
@@ -20,33 +22,16 @@ const tabIcons = {
 
 const EventBoardContent = () => {
   const searchParams = useSearchParams();
-  const [eventId, setEventId] = useState(null);
-  const [event, setEvent] = useState(null);
-  const [costs, setCosts] = useState([]);
-  const [tasks, setTasks] = useState([]);
-
+  const eventId = searchParams.get('eventId')
   
+  const { data: event, isLoading, error } = useQuery({
+    queryKey: ['event/get', eventId],
+    queryFn: () => fetchEventById(eventId)
+  });
 
-  useEffect(() => {
-    const eventIdFromParams = searchParams.get('eventId');
-    setEventId(eventIdFromParams);
-  }, [searchParams]);
-  
-  useEffect(() => {
-    const fetchEvent = async () => {
-      const data = mockEvents.find(event => event.id === eventId);
-      console.log(data);
-      setEvent(data);
-      if (data) {
-        setCosts(data.costs);
-        setTasks(data.tasks || []);
-      }
-    };
 
-    if (eventId) {
-      fetchEvent();
-    }
-  }, [eventId]);
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading event: {error.message}</p>;
 
   if (!event) {
     return <p>Loading...</p>;
@@ -118,13 +103,13 @@ const EventBoardContent = () => {
           <Col>
             <Tab.Content className={styles.tabContent}>
               <Tab.Pane eventKey="attendees">
-                <Attendees attendees={event.attendees} />
+                <Attendees eventId={eventId} attendees={event.attendees} />
               </Tab.Pane>
               <Tab.Pane eventKey="costs">
-                <CostSource costs={costs} setCosts={setCosts}/>
+                <CostSource eventId={eventId} costs={event.costs} />
               </Tab.Pane>
               <Tab.Pane eventKey="tasks">
-                <TaskManagement tasks={tasks} setTasks={setTasks} />
+                <TaskManagement eventId={eventId} tasks={event.tasks} />
               </Tab.Pane>
             </Tab.Content>
           </Col>

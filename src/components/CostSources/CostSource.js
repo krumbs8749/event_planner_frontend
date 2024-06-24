@@ -1,24 +1,40 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form, Table } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from "react";
+import { Modal, Button, Form, Table } from "react-bootstrap";
 import styles from "./cost-source.module.scss";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addOrUpdateCost } from "../../../app/api/eventAPI";
 
-export const CostSource = ({ costs, setCosts }) => {
+export const CostSource = ({ eventId, costs }) => {
+  const queryClient = useQueryClient();
+
   const [show, setShow] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [currentCost, setCurrentCost] = useState({
-    id: '',
-    name: '',
-    description: '',
-    category: '',
-    cost: ''
+    id: "",
+    name: "",
+    description: "",
+    category: "",
+    cost: "",
   });
 
   const handleClose = () => {
     setShow(false);
     setEditMode(false);
-    setCurrentCost({ id: '', name: '', description: '', category: '', cost: '' });
+    setCurrentCost({
+      id: "",
+      name: "",
+      description: "",
+      category: "",
+      cost: "",
+    });
   };
+
+  const mutation = useMutation({
+    mutationFn: (newCost) => addOrUpdateCost(eventId, newCost),
+    onSuccess: () => {
+        queryClient.invalidateQueries(["event/get", eventId])
+    }
+  })
 
   const handleShow = () => setShow(true);
 
@@ -29,11 +45,7 @@ export const CostSource = ({ costs, setCosts }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editMode) {
-      setCosts(prevCosts => prevCosts.map(cost => (cost.id === currentCost.id ? currentCost : cost)));
-    } else {
-      setCosts(prevCosts => [...prevCosts, { ...currentCost, id: uuidv4(), cost: parseFloat(currentCost.cost) }]);
-    }
+    mutation.mutate(currentCost)
     handleClose();
   };
 
@@ -44,7 +56,7 @@ export const CostSource = ({ costs, setCosts }) => {
   };
 
   const handleDelete = (id) => {
-    setCosts(prevCosts => prevCosts.filter(cost => cost.id !== id));
+    console.log("To be implemented")
   };
 
   return (
@@ -64,15 +76,32 @@ export const CostSource = ({ costs, setCosts }) => {
           </tr>
         </thead>
         <tbody>
-          {costs.map(cost => (
+          {costs.map((cost) => (
             <tr key={cost.id}>
               <td>{cost.name}</td>
               <td>{cost.description}</td>
               <td>{cost.category}</td>
-              <td>{cost.cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
               <td>
-                <Button variant="warning" size="sm" onClick={() => handleEdit(cost)}>Edit</Button>{' '}
-                <Button variant="danger" size="sm" onClick={() => handleDelete(cost.id)}>Delete</Button>
+                {cost.cost.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+              </td>
+              <td>
+                <Button
+                  variant="warning"
+                  size="sm"
+                  onClick={() => handleEdit(cost)}
+                >
+                  Edit
+                </Button>{" "}
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleDelete(cost.id)}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
@@ -81,7 +110,7 @@ export const CostSource = ({ costs, setCosts }) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{editMode ? 'Edit Cost' : 'Add New Cost'}</Modal.Title>
+          <Modal.Title>{editMode ? "Edit Cost" : "Add New Cost"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -130,7 +159,7 @@ export const CostSource = ({ costs, setCosts }) => {
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              {editMode ? 'Save Changes' : 'Add Cost'}
+              {editMode ? "Save Changes" : "Add Cost"}
             </Button>
           </Form>
         </Modal.Body>
