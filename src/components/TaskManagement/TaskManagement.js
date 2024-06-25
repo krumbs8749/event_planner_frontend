@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Table } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
 import styles from './task-management.module.scss';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { addOrUpdateTask } from '../../../app/api/eventAPI';
 
-const initialTasks = [
-  { id: uuidv4(), name: 'Setup Venue', description: 'Prepare the venue for the event', cost: 500.0, status: 'NOT_STARTED', deadline: '2024-05-01T09:00', priority: 'HIGH', assignee: 'John Doe' },
-  { id: uuidv4(), name: 'Arrange Catering', description: 'Organize food and beverages', cost: 300.0, status: 'IN_PROGRESS', deadline: '2024-05-10T12:00', priority: 'MEDIUM', assignee: 'Jane Smith' },
-  // Add more tasks as needed
-];
 
-const TaskManagement = () => {
-  const [tasks, setTasks] = useState(initialTasks);
+const TaskManagement = ({eventId, tasks}) => {
+  const queryClient = useQueryClient();
+
   const [show, setShow] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [currentTask, setCurrentTask] = useState({
@@ -22,6 +19,13 @@ const TaskManagement = () => {
     deadline: '',
     priority: 'LOW',
     assignee: ''
+  });
+
+  const mutation = useMutation({
+    mutationFn: (newTask) => addOrUpdateTask(eventId, newTask),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["event/get", eventId])
+    }
   });
 
   const handleClose = () => {
@@ -39,11 +43,7 @@ const TaskManagement = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editMode) {
-      setTasks(tasks.map(task => (task.id === currentTask.id ? currentTask : task)));
-    } else {
-      setTasks([...tasks, { ...currentTask, id: uuidv4(), cost: parseFloat(currentTask.cost) }]);
-    }
+    mutation.mutate(currentTask)
     handleClose();
   };
 
@@ -54,7 +54,7 @@ const TaskManagement = () => {
   };
 
   const handleDelete = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    console.log("To be implemented")
   };
 
   return (

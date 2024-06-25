@@ -6,8 +6,8 @@ import styles from './ProfessionalTable.module.scss';
 const ProfessionalTable = ({ data, rateName, rateCalc }) => {
   const [key, setKey] = useState('live');
 
-  const liveEvents = data.filter(item => item.status === 'Live');
-  const completedEvents = data.filter(item => item.status === 'Completed');
+  const liveEvents = data.filter(item => item.status === 'LIVE');
+  const completedEvents = data.filter(item => item.status === 'COMPLETED');
 
   const renderTable = (events) => (
     <Table className={styles.table} striped bordered hover responsive>
